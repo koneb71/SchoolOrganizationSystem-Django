@@ -1,0 +1,104 @@
+{% extends "app/index.html" %}
+
+{% block title %}
+    Event List
+{% endblock title %}
+
+{% block content %}
+    <div class="row" style="padding-top: 20px; margin: 0 3% 0 3%">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Event List</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-hover dataTable" id="example2" role="grid"
+                                   aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">
+                                        Name
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">
+                                        Date
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">
+                                        School Year
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for list in lists %}
+                                    {% if list.is_active == True and forloop.counter|divisibleby:2 %}
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">{{ list.name }}</td>
+                                            <td> {{ list.last_name }}, {{ list.date }} {{ list.middle_initial }},</td>
+                                            <td>{{ list.school_year }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <a href="{% url 'attendance_page_sign_in' pk=list.id %}" class="btn btn-success" type="button">Sign In</a>
+                                                    <a href="{% url 'attendance_page_sign_out' pk=list.id %}" class="btn btn-success" type="button">Sign Out</a>
+                                                    <a class="btn btn-danger">Delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">{{ list.name }}</td>
+                                            <td>{{ list.date }}</td>
+                                            <td>{{ list.school_year }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <a href="{% url 'attendance_page_sign_in' pk=list.id %}" class="btn btn-success" type="button">Sign In</a>
+                                                    <a href="{% url 'attendance_page_sign_out' pk=list.id %}" class="btn btn-success" type="button">Sign Out</a>
+                                                    <a class="btn btn-danger">Delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1
+                                to 1 of 1 entries
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button previous disabled" id="example2_previous"><a href="#"
+                                                                                                            aria-controls="example2"
+                                                                                                            data-dt-idx="0"
+                                                                                                            tabindex="0">Previous</a>
+                                    </li>
+                                    <li class="paginate_button active"><a href="#" aria-controls="example2"
+                                                                          data-dt-idx="1" tabindex="0">1</a></li>
+                                    <li class="paginate_button next" id="example2_next"><a href="#"
+                                                                                           aria-controls="example2"
+                                                                                           data-dt-idx="7" tabindex="0">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+{% endblock %}

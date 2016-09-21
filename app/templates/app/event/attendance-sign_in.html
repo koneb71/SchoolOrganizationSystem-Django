@@ -1,0 +1,64 @@
+{% extends "app/index.html" %}
+
+{% block content %}
+    <div class='container'>
+        <form method="POST">
+            <div class="row">
+                <h1>{{ list.name }} Attendance | <small>Sign in</small></h1>
+            </div>
+            <input name="type" type="hidden" value="1" />
+
+            {% if success %}
+                <div class="alert alert-success alert-dismissible">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-check"></i> Present!</h4>
+                    Hi {{ student.first_name }} :)
+                </div>
+            {% endif %}
+            {% if error %}
+                <div class="alert alert-warning alert-dismissible">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-warning"></i>Invalid Input</h4>
+                    Warning!
+                </div>
+            {% endif %}
+
+            {% if already_present %}
+                <div class="alert alert-info alert-dismissible">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-info"></i>Warning!</h4>
+                    Already Sign in.
+                </div>
+            {% endif %}
+
+            <div class="row" style="padding-top: 50px">
+                <div id="clock" class="light">
+                    <div class="display">
+                        <div class="weekdays"></div>
+                        <div class="ampm"></div>
+                        <div class="alarm"></div>
+                        <div class="digits"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin: 0 25% 0 25%">
+
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter I.D Number" name="id_number">
+                    <span class="input-group-btn">
+                    <button href="{% url 'attendance_page_sign_in' pk=list.pk %}" class="btn btn-primary btn-flat"
+                            value="submit"
+                            type="submit">Submit</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+        <div class="row" style="padding-top: 30px">
+            <a href="{% url 'view_attendance_log_signin' pk=list.pk %}" class="btn btn-success" style="margin: 0 45% ">View Log</a>
+        </div>
+
+    </div>
+
+{% endblock %}
