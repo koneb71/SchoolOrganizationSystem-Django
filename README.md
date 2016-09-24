@@ -1,1 +1,1 @@
-# SchoolOrganizationSystem-Django
+# SchoolOrganizationSystem-Django (Version 0.4)

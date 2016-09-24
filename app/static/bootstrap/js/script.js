@@ -105,3 +105,11 @@ $(function(){
 	});
 
 });
+
+$('.id_number').keyup(function() {
+  var number = $(this).val().split("-").join(""); // remove hyphens
+  if (number.length > 0) {
+    number = number.match(new RegExp('.{1,4}', 'g')).join("-");
+  }
+  $(this).val(number);
+});

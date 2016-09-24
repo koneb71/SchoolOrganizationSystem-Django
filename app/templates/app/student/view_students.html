@@ -54,7 +54,7 @@
                                     {% else %}
                                         <tr role="row" class="even">
                                             <td class="sorting_1">{{ list.id_number }}</td>
-                                            <td> {{ list.last_name }}, {{ list.first_name }} {{ list.middle_initial }}</td>
+                                            <td> {{ list.last_name }}, {{ list.first_name }} {{ list.middle_initial }},</td>
                                             <td>{{ list.year_level }}</td>
                                             <td>
                                                 <div class="row">
@@ -75,7 +75,7 @@
                         <div class="col-sm-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                                 <ul class="pagination">
-                                    {% if contacts.has_previous %}
+                                    {% if lists.has_previous %}
                                         <li class="paginate_button previous disabled" id="example2_previous"><a
                                                 href="?page={{ lists.previous_page_number }}"
                                                 aria-controls="example2"
@@ -88,7 +88,7 @@
                                                                           data-dt-idx="1"
                                                                           tabindex="0">{{ lists.number }}</a></li>
 
-                                    {% if contacts.has_next %}
+                                    {% if lists.has_next %}
                                         <li class="paginate_button next" id="example2_next"><a
                                                 href="?page={{ lists.next_page_number }}"
                                                 aria-controls="example2"

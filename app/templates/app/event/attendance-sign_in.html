@@ -46,7 +46,7 @@
 
                 {% csrf_token %}
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter I.D Number" name="id_number">
+                    <input type="text" class="form-control id_number" placeholder="Enter I.D Number" name="id_number" maxlength="9" required>
                     <span class="input-group-btn">
                     <button href="{% url 'attendance_page_sign_in' pk=list.pk %}" class="btn btn-primary btn-flat"
                             value="submit"

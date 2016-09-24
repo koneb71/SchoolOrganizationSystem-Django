@@ -43,14 +43,14 @@
                                     {% if list.is_active == True and forloop.counter|divisibleby:2 %}
                                         <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ l.student.id_number }}</td>
-                                                <td>{{ l.student.last_name }}, {{ l.student.first_name }} {{ l.student.middle_initial }}</td>
+                                                <td>{{ l.student.last_name }}, {{ l.student.first_name }} {{ l.student.middle_initial }},</td>
                                                 <td>{{ l.student.year_level }}</td>
                                                 <td>{{ l.date_created }}</td>
                                         </tr>
                                     {% else %}
                                         <tr role="row" class="even">
                                                 <td class="sorting_1">{{ l.student.id_number }}</td>
-                                                <td>{{ l.student.last_name }}, {{ l.student.first_name }} {{ l.student.middle_initial }}</td>
+                                                <td>{{ l.student.last_name }}, {{ l.student.first_name }} {{ l.student.middle_initial }},</td>
                                                 <td>{{ l.student.year_level }}</td>
                                                 <td>{{ l.date_created }}</td>
                                         </tr>
@@ -66,7 +66,7 @@
                         <div class="col-sm-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                                 <ul class="pagination">
-                                    {% if contacts.has_previous %}
+                                    {% if lists.has_previous %}
                                         <li class="paginate_button previous disabled" id="example2_previous"><a
                                                 href="?page={{ lists.previous_page_number }}"
                                                 aria-controls="example2"
@@ -79,7 +79,7 @@
                                                                           data-dt-idx="1"
                                                                           tabindex="0">{{ lists.number }}</a></li>
 
-                                    {% if contacts.has_next %}
+                                    {% if lists.has_next %}
                                         <li class="paginate_button next" id="example2_next"><a
                                                 href="?page={{ lists.next_page_number }}"
                                                 aria-controls="example2"

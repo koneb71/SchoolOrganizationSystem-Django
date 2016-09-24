@@ -85,7 +85,7 @@ def attendance_page_signout(request, pk):
     return render(request, "app/event/attendance-sign_out.html", {'list': event, 'log': attendance_log})
 
 def get_signin_log(request, pk):
-    students = Attendance.objects.filter(is_active=True, event=pk, type=1).all()
+    students = Attendance.objects.filter(is_active=True, event=pk, type=1).order_by("-date_created")
     paginator = Paginator(students, 8)
 
     page = request.GET.get('page')
